@@ -101,7 +101,7 @@ textarea {
   background: rgba(10, 14, 28, .58);
 }
 
-textarea { resize: vertical; min-height: 170px; }
+textarea { resize: vertical; min-height: 120px; }
 
 input:focus,
 textarea:focus {
@@ -183,7 +183,7 @@ code {
   gap: .7rem;
 }
 
-.prompt-list {
+.link-list {
   list-style: none;
   margin: .85rem 0 0;
   padding: 0;
@@ -191,7 +191,7 @@ code {
   gap: .72rem;
 }
 
-.prompt-item {
+.link-item {
   border: 1px solid rgba(255,255,255,.15);
   border-radius: .85rem;
   padding: .8rem;
@@ -200,24 +200,34 @@ code {
   gap: .46rem;
 }
 
-.prompt-top {
+.link-top {
   display: flex;
   justify-content: space-between;
   align-items: start;
   gap: .7rem;
 }
 
-.prompt-title {
+.link-title {
   font-size: 1rem;
   line-height: 1.3;
 }
 
-.prompt-meta {
+.link-title a {
+  color: #f0f4ff;
+  text-decoration: none;
+}
+
+.link-title a:hover {
+  color: #b8ddff;
+  text-decoration: underline;
+}
+
+.link-meta {
   color: var(--muted);
   font-size: .82rem;
 }
 
-.prompt-tags {
+.link-tags {
   display: flex;
   flex-wrap: wrap;
   gap: .35rem;
@@ -231,20 +241,20 @@ code {
   color: #dfd3ff;
 }
 
-.prompt-content {
+.link-notes {
   white-space: pre-wrap;
   color: var(--card-text);
   margin: 0;
   font-size: .92rem;
 }
 
-.prompt-actions {
+.link-actions {
   display: flex;
   gap: .5rem;
   flex-wrap: wrap;
 }
 
-.prompt-actions .btn {
+.link-actions .btn {
   padding: .45rem .62rem;
   font-size: .84rem;
 }
