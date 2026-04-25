@@ -155,6 +155,8 @@
             <p class="prompt-meta">Categoría: ${prompt.category || 'Sin categoría'} · Actualizado: ${formatDate(prompt.updatedAt)}</p>
           </div>
           <div class="prompt-actions">
+            <button type="button" class="btn ghost" data-action="copy" data-id="${prompt.id}">Copiar</button>
+            <button type="button" class="btn ghost" data-action="duplicate" data-id="${prompt.id}">Duplicar</button>
             <button type="button" class="btn ghost" data-action="edit" data-id="${prompt.id}">Editar</button>
             <button type="button" class="btn danger" data-action="delete" data-id="${prompt.id}">Eliminar</button>
           </div>
@@ -250,6 +252,44 @@
     setFormMessage('Prompt eliminado.', 'success');
   }
 
+
+  async function copyPromptById(id) {
+    const prompt = state.prompts.find((item) => item.id === id);
+    if (!prompt) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(prompt.content);
+      els.importMessage.textContent = `Prompt copiado: ${prompt.title}`;
+    } catch (error) {
+      els.importMessage.textContent = 'No se pudo copiar automáticamente. Copia manualmente el contenido.';
+    }
+  }
+
+  function duplicatePromptById(id) {
+    const prompt = state.prompts.find((item) => item.id === id);
+    if (!prompt) {
+      return;
+    }
+
+    const now = new Date().toISOString();
+    const duplicate = {
+      ...prompt,
+      id: crypto.randomUUID(),
+      title: `Copia de ${prompt.title}`,
+      createdAt: now,
+      updatedAt: now,
+    };
+
+    state.prompts.unshift(duplicate);
+    saveState();
+    renderList();
+    fillForm(duplicate);
+    setFormMessage('Copia creada. Puedes editarla y guardarla.', 'success');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   function exportJson() {
     const payload = {
       exportedAt: new Date().toISOString(),
@@ -327,6 +367,14 @@
       const id = target.getAttribute('data-id');
       if (!action || !id) {
         return;
+      }
+
+      if (action === 'copy') {
+        copyPromptById(id);
+      }
+
+      if (action === 'duplicate') {
+        duplicatePromptById(id);
       }
 
       if (action === 'edit') {
