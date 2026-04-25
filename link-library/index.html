@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinity Hues Biblioteca de Links</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="card app-header">
+      <div class="brand-block">
+        <div class="brand-logo" role="img" aria-label="IH">IH</div>
+        <div>
+          <h1>Biblioteca de Links v1</h1>
+          <p>Guarda, filtra y reutiliza links clave sin backend.</p>
+        </div>
+      </div>
+      <a class="hub-link" href="../">← Volver al hub</a>
+    </header>
+
+    <section class="card">
+      <h2 id="form-title">Nuevo link</h2>
+      <form id="link-form" novalidate>
+        <input type="hidden" id="link-id" />
+        <div class="grid two">
+          <div>
+            <label for="link-title">Título *</label>
+            <input id="link-title" type="text" required maxlength="120" placeholder="Ej. Guía de SEO técnico" />
+          </div>
+          <div>
+            <label for="link-url">URL *</label>
+            <input id="link-url" type="url" required placeholder="https://..." />
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div>
+            <label for="link-category">Categoría</label>
+            <input id="link-category" type="text" maxlength="50" placeholder="Marketing, Diseño, IA..." />
+          </div>
+          <div>
+            <label for="link-tags">Tags (coma)</label>
+            <input id="link-tags" type="text" maxlength="200" placeholder="seo, ads, email" />
+          </div>
+        </div>
+
+        <div>
+          <label for="link-notes">Notas</label>
+          <textarea id="link-notes" rows="3" maxlength="500" placeholder="Contexto, uso recomendado, checklist..."></textarea>
+        </div>
+
+        <p id="form-feedback" class="feedback" role="alert" aria-live="polite"></p>
+
+        <div class="actions-row">
+          <button class="btn primary" type="submit" id="submit-btn">Guardar link</button>
+          <button class="btn ghost" type="button" id="cancel-edit" hidden>Cancelar edición</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <label for="search-input">Buscar</label>
+          <input id="search-input" type="search" placeholder="Título, URL, tags, notas..." />
+        </div>
+        <div class="filter-wrap">
+          <label for="category-filter">Filtrar por categoría</label>
+          <select id="category-filter">
+            <option value="">Todas</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions-row wrap">
+        <button class="btn secondary" id="export-json" type="button">Exportar JSON</button>
+        <button class="btn secondary" id="export-csv" type="button">Exportar CSV</button>
+        <label class="btn ghost file-btn" for="import-json">Importar JSON</label>
+        <input id="import-json" type="file" accept="application/json,.json" hidden />
+      </div>
+
+      <p id="toolbar-feedback" class="feedback" aria-live="polite"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Categoría</th>
+              <th>Tags</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="links-body"></tbody>
+        </table>
+      </div>
+
+      <p id="empty-state" class="empty-state">No hay links que coincidan con tu búsqueda.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

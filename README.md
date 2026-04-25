@@ -8,6 +8,10 @@ Hub web de herramientas de Infinity Hues. La raíz del proyecto ahora funciona c
 /
 ├── index.html                # Hub principal de Infinity Hues Tools
 ├── README.md
+├── link-library/
+│   ├── index.html            # Infinity Hues Biblioteca de Links v1
+│   ├── styles.css
+│   └── script.js
 └── playlist-timer/
     ├── index.html            # Infinity Hues Playlist Timer
     ├── styles.css
@@ -31,10 +35,22 @@ Características actuales (sin cambios funcionales):
 - Persistencia en `localStorage`.
 - Botón **Copiar resumen** al portapapeles.
 
+### 2) Biblioteca de Links v1 (activa)
+Ruta: `/link-library/`
+
+Características actuales:
+- Alta, edición, duplicado y eliminación de links.
+- Búsqueda por texto y filtro por categoría.
+- Apertura de link en nueva pestaña.
+- Copiar URL y copiar ficha completa al portapapeles.
+- Persistencia en `localStorage`.
+- Importación y exportación de JSON.
+- Exportación de CSV.
+- Dataset inicial con links de ejemplo genéricos.
+
 ### Próximas herramientas (en el hub)
 - Analizador de Ads
 - Tracker KDP
-- Biblioteca de Links
 - Biblioteca de Prompts
 
 ## Ejecutar localmente
