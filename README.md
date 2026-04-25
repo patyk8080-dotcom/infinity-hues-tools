@@ -8,8 +8,12 @@ Hub web de herramientas de Infinity Hues. La raíz del proyecto ahora funciona c
 /
 ├── index.html                # Hub principal de Infinity Hues Tools
 ├── README.md
-└── playlist-timer/
-    ├── index.html            # Infinity Hues Playlist Timer
+├── playlist-timer/
+│   ├── index.html            # Infinity Hues Playlist Timer
+│   ├── styles.css
+│   └── script.js
+└── prompt-library/
+    ├── index.html            # Biblioteca de Prompts v1
     ├── styles.css
     └── script.js
 ```
@@ -31,11 +35,22 @@ Características actuales (sin cambios funcionales):
 - Persistencia en `localStorage`.
 - Botón **Copiar resumen** al portapapeles.
 
+
+### 2) Biblioteca de Prompts v1 (activa)
+Ruta: `/prompt-library/`
+
+Características actuales:
+- Alta, edición y eliminación de prompts.
+- Búsqueda por texto y filtro por categoría.
+- Persistencia completa en `localStorage`.
+- Exportación de la biblioteca a JSON descargable.
+- Importación de JSON para restaurar/reemplazar biblioteca.
+- Restauración de prompts de ejemplo.
+
 ### Próximas herramientas (en el hub)
 - Analizador de Ads
 - Tracker KDP
 - Biblioteca de Links
-- Biblioteca de Prompts
 
 ## Ejecutar localmente
 
@@ -53,6 +68,7 @@ Luego abre:
 
 - Hub: `http://localhost:8080/`
 - Playlist Timer: `http://localhost:8080/playlist-timer/`
+- Biblioteca de Prompts: `http://localhost:8080/prompt-library/`
 
 ## Despliegue
 
