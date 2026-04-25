@@ -3,108 +3,213 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infinity Hues Playlist Timer</title>
+  <title>Infinity Hues Tools</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --bg-1: #12131b;
+      --bg-2: #1a1d2b;
+      --bg-3: #271f3f;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.18);
+      --text: #f2f4ff;
+      --muted: #c3c7df;
+      --purple: #8f57ff;
+      --pink: #ec62cf;
+      --blue: #58a2ff;
+      --green: #2ed19a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 80% -20%, rgba(143, 87, 255, 0.48), transparent 36%),
+        radial-gradient(circle at 10% 120%, rgba(88, 162, 255, 0.28), transparent 42%),
+        linear-gradient(140deg, var(--bg-3), var(--bg-2) 42%, var(--bg-1));
+      display: grid;
+      place-items: center;
+      padding: clamp(1rem, 3vw, 2.6rem);
+    }
+
+    .hub-shell {
+      width: min(1100px, 100%);
+      display: grid;
+      gap: 1.3rem;
+    }
+
+    .hero,
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 1.2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero {
+      padding: clamp(1.3rem, 2.2vw, 1.8rem);
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo {
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 0.9rem;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      box-shadow: 0 10px 25px rgba(143, 87, 255, 0.45);
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      max-width: 68ch;
+      line-height: 1.55;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .tool-card {
+      padding: 1rem;
+      display: grid;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+      min-height: 180px;
+      align-content: start;
+    }
+
+    .tool-card.active:hover,
+    .tool-card.active:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(46, 209, 154, 0.7);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.33);
+      outline: none;
+    }
+
+    .badge {
+      width: fit-content;
+      font-size: 0.76rem;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 0.25rem 0.55rem;
+    }
+
+    .badge.active {
+      color: #043e2b;
+      background: rgba(46, 209, 154, 0.86);
+    }
+
+    .badge.future {
+      color: #4f5774;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    h2 {
+      font-size: 1.06rem;
+    }
+
+    .tool-description {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .link-label {
+      margin-top: auto;
+      color: #c0f6e3;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .tool-card.future {
+      opacity: 0.85;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        align-items: start;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main class="app-shell">
-    <header class="app-header card">
-      <div class="brand-block" aria-label="Logo Infinity Hues">
-        <div class="brand-logo" role="img" aria-label="IH">IH</div>
-        <div>
-          <h1>Infinity Hues Playlist Timer</h1>
-          <p>Calcula tus playlists de 60 minutos sin perder el hilo.</p>
-        </div>
+  <main class="hub-shell">
+    <header class="hero">
+      <div class="brand" aria-label="Logo Infinity Hues">
+        <div class="logo" role="img" aria-label="IH">IH</div>
+        <h1>Infinity Hues Tools</h1>
       </div>
+      <p class="subtitle">Herramientas simples para crear, organizar y avanzar con más claridad.</p>
     </header>
 
-    <section class="controls-grid">
-      <article class="card form-card">
-        <h2>Añadir canción</h2>
-        <form id="song-form" novalidate>
-          <label for="song-name">Nombre (opcional)</label>
-          <input id="song-name" name="songName" type="text" placeholder="Ej. Midnight Drive" />
+    <section class="cards" aria-label="Herramientas disponibles y próximas">
+      <a class="tool-card active" href="./playlist-timer/">
+        <span class="badge active">Activa</span>
+        <h2>Playlist Timer</h2>
+        <p class="tool-description">Calcula la duración total de tu playlist, mide tu avance y ajusta hasta alcanzar el objetivo perfecto.</p>
+        <span class="link-label">Abrir herramienta →</span>
+      </a>
 
-          <div class="time-inputs">
-            <div>
-              <label for="minutes">Minutos</label>
-              <input id="minutes" name="minutes" type="number" min="0" inputmode="numeric" placeholder="0" />
-            </div>
-            <div>
-              <label for="seconds">Segundos</label>
-              <input id="seconds" name="seconds" type="number" min="0" max="59" inputmode="numeric" placeholder="0" />
-            </div>
-          </div>
-
-          <div>
-            <label for="target-minutes">Objetivo (minutos)</label>
-            <input id="target-minutes" name="targetMinutes" type="number" min="1" step="1" value="60" inputmode="numeric" />
-          </div>
-
-          <p id="form-error" class="error-message" role="alert" aria-live="polite"></p>
-
-          <div class="actions-row">
-            <button type="submit" class="btn primary">Añadir canción</button>
-            <button type="button" id="clear-all" class="btn ghost">Limpiar todo</button>
-          </div>
-        </form>
+      <article class="tool-card future" aria-disabled="true">
+        <span class="badge future">Próximamente</span>
+        <h2>Ads Analyzer</h2>
+        <p class="tool-description">Panel para revisar ideas y rendimiento creativo de anuncios en un solo vistazo.</p>
       </article>
 
-      <article class="card summary-card">
-        <h2>Resumen</h2>
-        <div class="stat-list">
-          <div class="stat-item">
-            <span>Total acumulado</span>
-            <strong id="total-time">00:00</strong>
-          </div>
-          <div class="stat-item">
-            <span>Tiempo restante</span>
-            <strong id="remaining-time">60:00</strong>
-          </div>
-          <div class="stat-item">
-            <span>Completado</span>
-            <strong id="progress-percent">0%</strong>
-          </div>
-        </div>
-
-        <div class="progress-wrap">
-          <div class="progress-track" aria-hidden="true">
-            <div id="progress-bar" class="progress-fill"></div>
-          </div>
-          <p id="status-pill" class="status-pill under">Falta música</p>
-        </div>
-
-        <button type="button" id="copy-summary" class="btn secondary">Copiar resumen</button>
-        <p id="copy-feedback" class="copy-feedback" aria-live="polite"></p>
+      <article class="tool-card future" aria-disabled="true">
+        <span class="badge future">Próximamente</span>
+        <h2>KDP Tracker</h2>
+        <p class="tool-description">Seguimiento simple de publicaciones, resultados y oportunidades de mejora para KDP.</p>
       </article>
-    </section>
 
-    <section class="card history-card">
-      <div class="history-header">
-        <h2>Historial de canciones</h2>
-        <span id="song-count" class="song-count">0 canciones</span>
-      </div>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nombre</th>
-              <th>Duración</th>
-              <th>Acumulado</th>
-              <th>Acción</th>
-            </tr>
-          </thead>
-          <tbody id="history-body"></tbody>
-        </table>
-      </div>
-      <p id="empty-state" class="empty-state">Aún no has añadido canciones.</p>
+      <article class="tool-card future" aria-disabled="true">
+        <span class="badge future">Próximamente</span>
+        <h2>Link Library</h2>
+        <p class="tool-description">Colección curada de enlaces clave para tus procesos y referencias de trabajo.</p>
+      </article>
+
+      <article class="tool-card future" aria-disabled="true">
+        <span class="badge future">Próximamente</span>
+        <h2>Prompt Library</h2>
+        <p class="tool-description">Biblioteca modular de prompts listos para acelerar tareas y flujos creativos.</p>
+      </article>
     </section>
   </main>
-
-  <script src="script.js"></script>
 </body>
 </html>
