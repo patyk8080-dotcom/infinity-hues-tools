@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinity Hues Playlist Timer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header card">
+      <div class="brand-block" aria-label="Logo Infinity Hues">
+        <div class="brand-logo" role="img" aria-label="IH">IH</div>
+        <div>
+          <h1>Infinity Hues Playlist Timer</h1>
+          <p>Calcula tus playlists de 60 minutos sin perder el hilo.</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="controls-grid">
+      <article class="card form-card">
+        <h2>Añadir canción</h2>
+        <form id="song-form" novalidate>
+          <label for="song-name">Nombre (opcional)</label>
+          <input id="song-name" name="songName" type="text" placeholder="Ej. Midnight Drive" />
+
+          <div class="time-inputs">
+            <div>
+              <label for="minutes">Minutos</label>
+              <input id="minutes" name="minutes" type="number" min="0" inputmode="numeric" placeholder="0" />
+            </div>
+            <div>
+              <label for="seconds">Segundos</label>
+              <input id="seconds" name="seconds" type="number" min="0" max="59" inputmode="numeric" placeholder="0" />
+            </div>
+          </div>
+
+          <div>
+            <label for="target-minutes">Objetivo (minutos)</label>
+            <input id="target-minutes" name="targetMinutes" type="number" min="1" step="1" value="60" inputmode="numeric" />
+          </div>
+
+          <p id="form-error" class="error-message" role="alert" aria-live="polite"></p>
+
+          <div class="actions-row">
+            <button type="submit" class="btn primary">Añadir canción</button>
+            <button type="button" id="clear-all" class="btn ghost">Limpiar todo</button>
+          </div>
+        </form>
+      </article>
+
+      <article class="card summary-card">
+        <h2>Resumen</h2>
+        <div class="stat-list">
+          <div class="stat-item">
+            <span>Total acumulado</span>
+            <strong id="total-time">00:00</strong>
+          </div>
+          <div class="stat-item">
+            <span>Tiempo restante</span>
+            <strong id="remaining-time">60:00</strong>
+          </div>
+          <div class="stat-item">
+            <span>Completado</span>
+            <strong id="progress-percent">0%</strong>
+          </div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-track" aria-hidden="true">
+            <div id="progress-bar" class="progress-fill"></div>
+          </div>
+          <p id="status-pill" class="status-pill under">Falta música</p>
+        </div>
+
+        <button type="button" id="copy-summary" class="btn secondary">Copiar resumen</button>
+        <p id="copy-feedback" class="copy-feedback" aria-live="polite"></p>
+      </article>
+    </section>
+
+    <section class="card history-card">
+      <div class="history-header">
+        <h2>Historial de canciones</h2>
+        <span id="song-count" class="song-count">0 canciones</span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Duración</th>
+              <th>Acumulado</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </div>
+      <p id="empty-state" class="empty-state">Aún no has añadido canciones.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
