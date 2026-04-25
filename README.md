@@ -13,11 +13,11 @@ Hub web de herramientas de Infinity Hues. La raíz del proyecto funciona como pa
 │   ├── styles.css
 │   └── script.js
 ├── prompt-library/
-│   ├── index.html            # Biblioteca de Prompts v1
+│   ├── index.html            # Biblioteca de Prompts
 │   ├── styles.css
 │   └── script.js
 └── link-library/
-    ├── index.html            # Biblioteca de Links v1
+    ├── index.html            # Biblioteca de Links
     ├── styles.css
     └── script.js
 ```
@@ -39,7 +39,7 @@ Características:
 - Persistencia en `localStorage`.
 - Botón **Copiar resumen** al portapapeles.
 
-### 2) Biblioteca de Prompts v1
+### 2) Biblioteca de Prompts
 Ruta: `/prompt-library/`
 
 Características:
@@ -50,7 +50,7 @@ Características:
 - Importación de JSON para restaurar/reemplazar biblioteca.
 - Restauración de prompts de ejemplo.
 
-### 3) Biblioteca de Links v1
+### 3) Biblioteca de Links
 Ruta: `/link-library/`
 
 Características:
