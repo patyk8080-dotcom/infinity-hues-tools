@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinity Hues Biblioteca de Prompts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="card app-header">
+      <div class="brand-block">
+        <div class="brand-logo" role="img" aria-label="IH">IH</div>
+        <div>
+          <h1>Biblioteca de Prompts v1</h1>
+          <p>Repositorio local para guardar y reutilizar prompts.</p>
+        </div>
+      </div>
+      <a class="hub-link" href="../">← Volver al hub</a>
+    </header>
+
+    <section class="card">
+      <h2>Nuevo prompt</h2>
+      <form id="prompt-form" novalidate>
+        <label for="prompt-title">Título *</label>
+        <input id="prompt-title" required maxlength="120" placeholder="Ej. Prompt para idea de portada" />
+
+        <label for="prompt-category">Categoría</label>
+        <input id="prompt-category" maxlength="60" placeholder="Marketing, Diseño, Copy..." />
+
+        <label for="prompt-content">Prompt *</label>
+        <textarea id="prompt-content" rows="5" required maxlength="2000" placeholder="Escribe aquí el prompt..."></textarea>
+
+        <p id="form-feedback" class="feedback" aria-live="polite"></p>
+
+        <div class="actions-row">
+          <button class="btn primary" type="submit">Guardar</button>
+          <button class="btn ghost" type="button" id="clear-all">Limpiar todo</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <label for="search">Buscar</label>
+      <input id="search" type="search" placeholder="Título, categoría o contenido..." />
+
+      <div id="prompt-list" class="list"></div>
+      <p id="empty-state" class="empty">No hay prompts guardados.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
